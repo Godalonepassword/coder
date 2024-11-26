@@ -13089,7 +13089,7 @@ func (q *sqlQuerier) GetWorkspaceAppByAgentIDAndSlug(ctx context.Context, arg Ge
 		&i.External,
 		&i.DisplayOrder,
 		&i.Hidden,
-		&i.CorsBehavior,
+		&i.CORSBehavior,
 	)
 	return i, err
 }
@@ -13125,7 +13125,7 @@ func (q *sqlQuerier) GetWorkspaceAppsByAgentID(ctx context.Context, agentID uuid
 			&i.External,
 			&i.DisplayOrder,
 			&i.Hidden,
-			&i.CorsBehavior,
+			&i.CORSBehavior,
 		); err != nil {
 			return nil, err
 		}
@@ -13171,7 +13171,7 @@ func (q *sqlQuerier) GetWorkspaceAppsByAgentIDs(ctx context.Context, ids []uuid.
 			&i.External,
 			&i.DisplayOrder,
 			&i.Hidden,
-			&i.CorsBehavior,
+			&i.CORSBehavior,
 		); err != nil {
 			return nil, err
 		}
@@ -13217,7 +13217,7 @@ func (q *sqlQuerier) GetWorkspaceAppsCreatedAfter(ctx context.Context, createdAt
 			&i.External,
 			&i.DisplayOrder,
 			&i.Hidden,
-			&i.CorsBehavior,
+			&i.CORSBehavior,
 		); err != nil {
 			return nil, err
 		}
@@ -13270,7 +13270,7 @@ type InsertWorkspaceAppParams struct {
 	External             bool               `db:"external" json:"external"`
 	Subdomain            bool               `db:"subdomain" json:"subdomain"`
 	SharingLevel         AppSharingLevel    `db:"sharing_level" json:"sharing_level"`
-	CorsBehavior         AppCORSBehavior    `db:"cors_behavior" json:"cors_behavior"`
+	CORSBehavior         AppCORSBehavior    `db:"cors_behavior" json:"cors_behavior"`
 	HealthcheckUrl       string             `db:"healthcheck_url" json:"healthcheck_url"`
 	HealthcheckInterval  int32              `db:"healthcheck_interval" json:"healthcheck_interval"`
 	HealthcheckThreshold int32              `db:"healthcheck_threshold" json:"healthcheck_threshold"`
@@ -13292,7 +13292,7 @@ func (q *sqlQuerier) InsertWorkspaceApp(ctx context.Context, arg InsertWorkspace
 		arg.External,
 		arg.Subdomain,
 		arg.SharingLevel,
-		arg.CorsBehavior,
+		arg.CORSBehavior,
 		arg.HealthcheckUrl,
 		arg.HealthcheckInterval,
 		arg.HealthcheckThreshold,
@@ -13319,7 +13319,7 @@ func (q *sqlQuerier) InsertWorkspaceApp(ctx context.Context, arg InsertWorkspace
 		&i.External,
 		&i.DisplayOrder,
 		&i.Hidden,
-		&i.CorsBehavior,
+		&i.CORSBehavior,
 	)
 	return i, err
 }
