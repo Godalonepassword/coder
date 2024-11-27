@@ -9327,6 +9327,17 @@ const docTemplate = `{
                 "AgentSubsystemExectrace"
             ]
         },
+        "codersdk.AppCORSBehavior": {
+            "type": "string",
+            "enum": [
+                "simple",
+                "passthru"
+            ],
+            "x-enum-varnames": [
+                "AppCORSBehaviorSimple",
+                "AppCORSBehaviorPassthru"
+            ]
+        },
         "codersdk.AppHostResponse": {
             "type": "object",
             "properties": {
@@ -9930,6 +9941,14 @@ const docTemplate = `{
                     "allOf": [
                         {
                             "$ref": "#/definitions/codersdk.TemplateAutostopRequirement"
+                        }
+                    ]
+                },
+                "cors_behavior": {
+                    "description": "CORSBehavior allows optionally specifying the CORS behavior for all shared ports.",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/codersdk.AppCORSBehavior"
                         }
                     ]
                 },

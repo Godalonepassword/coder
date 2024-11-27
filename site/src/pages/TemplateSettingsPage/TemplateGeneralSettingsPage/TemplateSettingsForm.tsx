@@ -7,6 +7,7 @@ import {
 	type Template,
 	type UpdateTemplateMeta,
 	WorkspaceAppSharingLevels,
+	AppCORSBehaviors,
 } from "api/typesGenerated";
 import { PremiumBadge } from "components/Badges/Badges";
 import {
@@ -47,6 +48,7 @@ export const validationSchema = Yup.object({
 	require_active_version: Yup.boolean(),
 	deprecation_message: Yup.string(),
 	max_port_sharing_level: Yup.string().oneOf(WorkspaceAppSharingLevels),
+	cors_behavior: Yup.string().oneOf(Object.values(AppCORSBehaviors)),
 });
 
 export interface TemplateSettingsForm {
@@ -87,6 +89,7 @@ export const TemplateSettingsForm: FC<TemplateSettingsForm> = ({
 			deprecation_message: template.deprecation_message,
 			disable_everyone_group_access: false,
 			max_port_share_level: template.max_port_share_level,
+			cors_behavior: template.cors_behavior,
 		},
 		validationSchema,
 		onSubmit,
@@ -287,6 +290,27 @@ export const TemplateSettingsForm: FC<TemplateSettingsForm> = ({
 							</FormHelperText>
 						</Stack>
 					)}
+				</FormFields>
+			</FormSection>
+
+			<FormSection
+				title="CORS Behavior" 
+				description="Control how Cross-Origin Resource Sharing (CORS) requests are handled for workspace applications."
+			>
+				<FormFields>
+					<TextField
+						{...getFieldHelpers("cors_behavior", {
+							helperText: "How CORS requests should be handled for workspace applications.",
+						})}
+						disabled={isSubmitting}
+						fullWidth
+						select
+						value={form.values.cors_behavior}
+						label="CORS Behavior"
+					>
+						<MenuItem value="simple">Simple</MenuItem>
+						<MenuItem value="passthru">Pass Through</MenuItem>
+					</TextField>
 				</FormFields>
 			</FormSection>
 

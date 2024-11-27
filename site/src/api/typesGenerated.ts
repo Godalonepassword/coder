@@ -292,6 +292,7 @@ export interface CreateTemplateRequest {
 	readonly disable_everyone_group_access: boolean;
 	readonly require_active_version: boolean;
 	readonly max_port_share_level?: WorkspaceAgentPortShareLevel;
+	readonly cors_behavior?: AppCORSBehavior;
 }
 
 // From codersdk/templateversions.go
@@ -1347,6 +1348,7 @@ export interface Template {
 	readonly time_til_dormant_autodelete_ms: number;
 	readonly require_active_version: boolean;
 	readonly max_port_share_level: WorkspaceAgentPortShareLevel;
+	readonly cors_behavior: AppCORSBehavior;
 }
 
 // From codersdk/templates.go
@@ -1620,6 +1622,7 @@ export interface UpdateTemplateMeta {
 	readonly deprecation_message?: string;
 	readonly disable_everyone_group_access: boolean;
 	readonly max_port_share_level?: WorkspaceAgentPortShareLevel;
+	readonly cors_behavior?: AppCORSBehavior;
 }
 
 // From codersdk/users.go
@@ -2136,6 +2139,10 @@ export const APIKeyScopes: APIKeyScope[] = ["all", "application_connect"]
 // From codersdk/workspaceagents.go
 export type AgentSubsystem = "envbox" | "envbuilder" | "exectrace"
 export const AgentSubsystems: AgentSubsystem[] = ["envbox", "envbuilder", "exectrace"]
+
+// From codersdk/cors_behavior.go
+export type AppCORSBehavior = "passthru" | "simple"
+export const AppCORSBehaviors: AppCORSBehavior[] = ["passthru", "simple"]
 
 // From codersdk/audit.go
 export type AuditAction = "create" | "delete" | "login" | "logout" | "register" | "request_password_reset" | "start" | "stop" | "write"

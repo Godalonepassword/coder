@@ -167,6 +167,7 @@ curl -X POST http://coder-server:8080/api/v2/organizations/{organization}/templa
 		"days_of_week": ["monday"],
 		"weeks": 0
 	},
+	"cors_behavior": "simple",
 	"default_ttl_ms": 0,
 	"delete_ttl_ms": 0,
 	"description": "string",
